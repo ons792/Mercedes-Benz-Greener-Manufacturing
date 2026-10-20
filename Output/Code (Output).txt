@@ -1,0 +1,111 @@
+============================================================
+STEP 1: Loading Data
+============================================================
+Train shape : (4209, 378)
+Test  shape : (4209, 377)
+
+Target column 'y' stats:
+count    4209.000000
+mean      100.669318
+std        12.679381
+min        72.110000
+25%        90.820000
+50%        99.150000
+75%       109.010000
+max       265.320000
+Name: y, dtype: float64
+
+============================================================
+STEP 2: Removing Zero-Variance Columns
+============================================================
+Zero-variance columns found : 12
+Columns removed             : ['X11', 'X93', 'X107', 'X233', 'X235', 'X268', 'X289', 'X290', 'X293', 'X297', 'X330', 'X347']
+Train shape after removal   : (4209, 366)
+
+============================================================
+STEP 3: Null & Unique Value Check
+============================================================
+Total nulls in train : 0
+Total nulls in test  : 0
+
+Categorical columns  : ['X0', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'X8']
+  X0    -> train unique: 47, test unique: 49
+  X1    -> train unique: 27, test unique: 27
+  X2    -> train unique: 44, test unique: 45
+  X3    -> train unique: 7, test unique: 7
+  X4    -> train unique: 4, test unique: 4
+  X5    -> train unique: 29, test unique: 32
+  X6    -> train unique: 12, test unique: 12
+  X8    -> train unique: 25, test unique: 25
+
+============================================================
+STEP 4: Label Encoding Categorical Columns
+============================================================
+  Encoded: X0
+  Encoded: X1
+  Encoded: X2
+  Encoded: X3
+  Encoded: X4
+  Encoded: X5
+  Encoded: X6
+  Encoded: X8
+
+Sample after encoding:
+   X0  X1  X2  X3  X4  X5  X6  X8
+0  37  23  20   0   3  27   9  14
+1  37  21  22   4   3  31  11  14
+2  24  24  38   2   3  30   9  23
+
+============================================================
+STEP 5: Preparing Feature Matrices
+============================================================
+X_train shape : (4209, 364)
+X_test  shape : (4209, 364)
+y_train shape : (4209,)
+
+============================================================
+STEP 6: PCA Dimensionality Reduction
+============================================================
+Components retained (95% variance) : 6
+X_train after PCA                  : (4209, 6)
+X_test  after PCA                  : (4209, 6)
+Cumulative variance explained      : 0.9611
+
+============================================================
+STEP 7: Training XGBoost Model
+============================================================
+  Model training complete.
+
+Training R² Score : 0.5797
+
+============================================================
+STEP 8: Predicting on Test Set
+============================================================
+Prediction stats:
+count    4209.000000
+mean      100.956288
+std         7.367277
+min        75.426850
+25%        95.525107
+50%        99.831546
+75%       107.374813
+max       166.620804
+Name: y, dtype: float64
+
+Sample predictions:
+ ID          y
+  1  77.540054
+  2  95.807568
+  3  94.163839
+  4  81.251693
+  5 107.204573
+  8  95.231290
+ 10  93.251740
+ 11  96.881905
+ 12 116.015772
+ 14  95.083420
+
+✅ Predictions saved to: mercedes_predictions.csv
+============================================================
+Pipeline Complete!
+============================================================
